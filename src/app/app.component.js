@@ -8,15 +8,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
-        this.name = 'Angular';
+        this.title = 'Card collection app';
+        this.card = {
+            id: 1,
+            name: 'My card',
+            content: 'coooooontent content content'
+        };
     }
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "<h1>Hello {{name}}</h1>",
+        template: "<h1>{{title}}</h1><h2>{{card.name}} details!</h2>"
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
+var Card = (function () {
+    function Card() {
+    }
+    return Card;
+}());
+exports.Card = Card;
 //# sourceMappingURL=app.component.js.map
