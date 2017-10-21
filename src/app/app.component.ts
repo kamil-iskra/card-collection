@@ -5,9 +5,18 @@ import { Component } from '@angular/core';
   template: `
   <h1>{{title}}</h1>
   <h2>{{card.name}} details!</h2>
-  <div><label>id: </label>{{card.id}}</div>
-  <div><label>name: </label>{{card.name}}</div>
-  <div><label>content: </label>{{card.content}}</div>
+  <div>
+    <label>id: </label>
+    {{card.id}}
+  </div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="card.name" placeholder="name">
+  </div>
+  <div>
+    <label>content: </label>
+    {{card.content}}
+  </div>
   `
 })
 export class AppComponent  { 
