@@ -19,17 +19,12 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n  <h1>{{title}}</h1>\n  <h2>My Cards</h2>\n  <ul class=\"cards\">\n    <li *ngFor=\"let card of cards\" (click)=\"onSelect(card)\" [class.selected]=\"card === selectedCard\">\n      <span class=\"badge\">{{card.id}}</span> {{card.name}}\n    </li>\n  </ul>\n\n  <div *ngIf=\"selectedCard\">\n    <h2>{{selectedCard.name}} details!</h2>\n    <div>\n      <label>id: </label>\n      {{selectedCard.id}}\n    </div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"selectedCard.name\" placeholder=\"name\">\n    </div>\n    <div>\n      <label>content: </label>\n      {{selectedCard.content}}\n    </div>\n  </div>\n  ",
+        template: "\n  <h1>{{title}}</h1>\n  <h2>My Cards</h2>\n  <ul class=\"cards\">\n    <li *ngFor=\"let card of cards\" (click)=\"onSelect(card)\" [class.selected]=\"card === selectedCard\">\n      <span class=\"badge\">{{card.id}}</span> {{card.name}}\n    </li>\n  </ul>\n  <card-detail [card]=\"selectedCard\"></card-detail>\n  ",
         styles: ["\n  .selected {\n    background-color: #3a9fcc !important;\n    color: white;\n  }\n  .cards {\n    margin: 0 0 2em 0;\n    list-style-type: none;\n    padding: 0;\n    width: 15em;\n  }\n  .cards li {\n    cursor: pointer;\n    position: relative;\n    left: 0;\n    background-color: #EEE;\n    margin: .5em;\n    padding: .3em 0;\n    height: 1.6em;\n    border-radius: 4px;\n  }\n  .cards li.selected:hover {\n    background-color: #1f5096 !important;\n    color: white;\n  }\n  .cards li:hover {\n    color: white;\n    background-color: #1f5096;\n    left: .1em;\n  }\n  .cards .text {\n    position: relative;\n    top: -3px;\n  }\n  .cards .badge {\n    display: inline-block;\n    font-size: small;\n    color: white;\n    padding: 0.8em 0.7em 0 0.7em;\n    background-color: #000000;\n    line-height: 1em;\n    position: relative;\n    left: -1px;\n    top: -4px;\n    height: 1.8em;\n    margin-right: .8em;\n    border-radius: 4px 0 0 4px;\n  }\n"]
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
-var Card = (function () {
-    function Card() {
-    }
-    return Card;
-}());
-exports.Card = Card;
+;
 // Temporary objects array
 var CARDS = [
     { id: 11, name: 'card 1', content: 'CONTENT 1' },

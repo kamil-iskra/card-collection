@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Card } from './card';
 
 @Component({
   selector: 'my-app',
@@ -10,22 +11,7 @@ import { Component } from '@angular/core';
       <span class="badge">{{card.id}}</span> {{card.name}}
     </li>
   </ul>
-
-  <div *ngIf="selectedCard">
-    <h2>{{selectedCard.name}} details!</h2>
-    <div>
-      <label>id: </label>
-      {{selectedCard.id}}
-    </div>
-    <div>
-      <label>name: </label>
-      <input [(ngModel)]="selectedCard.name" placeholder="name">
-    </div>
-    <div>
-      <label>content: </label>
-      {{selectedCard.content}}
-    </div>
-  </div>
+  <card-detail [card]="selectedCard"></card-detail>
   `,
 
   styles: [`
@@ -86,13 +72,7 @@ export class AppComponent {
   onSelect(card: Card): void {
     this.selectedCard = card;
   }
-}
-
-export class Card {
-  id: number;
-  name: string;
-  content: string;
-}
+};
 
 // Temporary objects array
 const CARDS: Card[] = [
