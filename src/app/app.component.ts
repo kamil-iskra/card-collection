@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { Card } from './card';
+import { CardService } from './card.service';
+import { OnInit } from '@angular/core';
 
 @Component({
+  providers: [CardService],
   selector: 'my-app',
   template: `
   <h1>{{title}}</h1>
@@ -64,26 +67,22 @@ import { Card } from './card';
   }
 `]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  ngOnInit(): void {
+    this.getCards();
+  }
+  
   title = 'Card collection app';
   selectedCard: Card;
-  cards = CARDS;
+  cards: Card[];
+
+  constructor(private cardService: CardService) { }
+
+  getCards(): void {
+    this.cards = this.cardService.getCards();
+  }
 
   onSelect(card: Card): void {
     this.selectedCard = card;
   }
 };
-
-// Temporary objects array
-const CARDS: Card[] = [
-  { id: 11, name: 'card 1', content: 'CONTENT 1' },
-  { id: 12, name: 'card 2', content: 'CONTENT 2' },
-  { id: 13, name: 'card 3', content: 'CONTENT 3' },
-  { id: 14, name: 'card 4', content: 'CONTENT 4' },
-  { id: 15, name: 'card 5', content: 'CONTENT 5' },
-  { id: 16, name: 'card 6', content: 'CONTENT 6' },
-  { id: 17, name: 'card 7', content: 'CONTENT 7' },
-  { id: 18, name: 'card 8', content: 'CONTENT 8' },
-  { id: 19, name: 'card 9', content: 'CONTENT 9' },
-  { id: 20, name: 'card 10', content: 'CONTENT 10' }
-];
