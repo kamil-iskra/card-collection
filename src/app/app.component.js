@@ -19,7 +19,8 @@ var AppComponent = (function () {
         this.getCards();
     };
     AppComponent.prototype.getCards = function () {
-        this.cards = this.cardService.getCards();
+        var _this = this;
+        this.cardService.getCards().then(function (cards) { return _this.cards = cards; });
     };
     AppComponent.prototype.onSelect = function (card) {
         this.selectedCard = card;

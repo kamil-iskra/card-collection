@@ -67,6 +67,7 @@ import { OnInit } from '@angular/core';
   }
 `]
 })
+
 export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.getCards();
@@ -79,7 +80,7 @@ export class AppComponent implements OnInit {
   constructor(private cardService: CardService) { }
 
   getCards(): void {
-    this.cards = this.cardService.getCards();
+    this.cardService.getCards().then(cards => this.cards = cards);
   }
 
   onSelect(card: Card): void {

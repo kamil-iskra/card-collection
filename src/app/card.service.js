@@ -11,7 +11,7 @@ var CardService = (function () {
     function CardService() {
     }
     CardService.prototype.getCards = function () {
-        return mock_cards_1.CARDS;
+        return Promise.resolve(mock_cards_1.CARDS);
     };
     return CardService;
 }());
