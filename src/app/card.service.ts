@@ -9,6 +9,11 @@ export class CardService {
         return Promise.resolve(CARDS);
     } 
 
+    getCard(id: number): Promise<Card> {
+        return this.getCards()
+                   .then(cards => cards.find(card => card.id === id));
+      }
+
     getCardsSlowly(): Promise<Card[]> {
         return new Promise(resolve => {
           // Simulate server latency with 2 second delay

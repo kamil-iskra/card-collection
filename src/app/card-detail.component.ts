@@ -1,5 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Location } from '@angular/common';
 import { Card } from './card';
+import { CardService } from './card.service';
+
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'card-detail',
@@ -20,6 +25,18 @@ import { Card } from './card';
     </div>
     </div>`
 })
-export class CardDetailComponent {
+export class CardDetailComponent implements OnInit {
     @Input() card: Card;
+
+    ngOnInit(): void {
+        this.route.paramMap
+        .switchMap((params: ParamMap) => this.cardService.getCard(+params.get('id')))
+        .subscribe(card => this.card = card);
+    }
+    constructor(
+        private cardService: CardService,
+        private route: ActivatedRoute,
+        private location: Location
+      ) {}
+
 }

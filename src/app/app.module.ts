@@ -27,6 +27,10 @@ import { CardService } from './card.service';
         redirectTo: '/dashboard',
         pathMatch: 'full'
       },
+      {
+        path: 'detail/:id',
+        component:CardDetailComponent
+      },
     ])
   ],
   declarations: [ 

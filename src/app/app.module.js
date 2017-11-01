@@ -38,6 +38,10 @@ AppModule = __decorate([
                     redirectTo: '/dashboard',
                     pathMatch: 'full'
                 },
+                {
+                    path: 'detail/:id',
+                    component: card_detail_component_1.CardDetailComponent
+                },
             ])
         ],
         declarations: [

@@ -13,6 +13,10 @@ var CardService = (function () {
     CardService.prototype.getCards = function () {
         return Promise.resolve(mock_cards_1.CARDS);
     };
+    CardService.prototype.getCard = function (id) {
+        return this.getCards()
+            .then(function (cards) { return cards.find(function (card) { return card.id === id; }); });
+    };
     CardService.prototype.getCardsSlowly = function () {
         var _this = this;
         return new Promise(function (resolve) {
