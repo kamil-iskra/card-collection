@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
-var card_1 = require("./card");
-var card_service_1 = require("./card.service");
+var card_1 = require("../card");
+var card_service_1 = require("../card.service");
 require("rxjs/add/operator/switchMap");
 var CardDetailComponent = (function () {
     function CardDetailComponent(cardService, route, location) {
@@ -26,6 +26,9 @@ var CardDetailComponent = (function () {
             .switchMap(function (params) { return _this.cardService.getCard(+params.get('id')); })
             .subscribe(function (card) { return _this.card = card; });
     };
+    CardDetailComponent.prototype.goBack = function () {
+        this.location.back();
+    };
     return CardDetailComponent;
 }());
 __decorate([
@@ -35,7 +38,7 @@ __decorate([
 CardDetailComponent = __decorate([
     core_1.Component({
         selector: 'card-detail',
-        template: "\n  <div *ngIf=\"card\">\n    <h2>{{card.name}} details!</h2>\n    <div>\n        <label>id: </label>\n        {{card.id}}\n    </div>\n    <div>\n        <label>name: </label>\n        <input [(ngModel)]=\"card.name\" placeholder=\"name\">\n    </div>\n    <div>\n        <label>content: </label>\n        {{card.content}}\n    </div>\n    </div>"
+        templateUrl: './card-detail.component.html',
     }),
     __metadata("design:paramtypes", [card_service_1.CardService,
         router_1.ActivatedRoute,

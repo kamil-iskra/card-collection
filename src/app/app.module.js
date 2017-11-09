@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
-var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
-var cards_component_1 = require("./cards.component");
-var card_detail_component_1 = require("./card-detail.component");
-var dashboard_component_1 = require("./dashboard.component");
+var cards_component_1 = require("./cards/cards.component");
+var card_detail_component_1 = require("./card-detail/card-detail.component");
+var dashboard_component_1 = require("./dashboard/dashboard.component");
 var card_service_1 = require("./card.service");
+var app_routing_module_1 = require("./app-routing.module");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -24,25 +24,7 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
-            router_1.RouterModule.forRoot([
-                {
-                    path: 'cards',
-                    component: cards_component_1.CardsComponent
-                },
-                {
-                    path: 'dashboard',
-                    component: dashboard_component_1.DashboardComponent
-                },
-                {
-                    path: '',
-                    redirectTo: '/dashboard',
-                    pathMatch: 'full'
-                },
-                {
-                    path: 'detail/:id',
-                    component: card_detail_component_1.CardDetailComponent
-                },
-            ])
+            app_routing_module_1.AppRoutingModule
         ],
         declarations: [
             app_component_1.AppComponent,
@@ -50,9 +32,7 @@ AppModule = __decorate([
             card_detail_component_1.CardDetailComponent,
             dashboard_component_1.DashboardComponent
         ],
-        providers: [
-            card_service_1.CardService
-        ],
+        providers: [card_service_1.CardService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

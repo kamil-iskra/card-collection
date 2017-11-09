@@ -1,0 +1,16 @@
+<div *ngIf="card">
+    <h2>{{card.name}} details!</h2>
+    <div>
+        <label>id: </label>
+        {{card.id}}
+    </div>
+    <div>
+        <label>name: </label>
+        <input [(ngModel)]="card.name" placeholder="name">
+    </div>
+    <div>
+        <label>content: </label>
+        <input [(ngModel)]="card.content" placeholder="content">
+    </div>
+    <button (click)="goBack()">Back</button>
+</div>

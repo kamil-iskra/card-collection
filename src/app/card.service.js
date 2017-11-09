@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var mock_cards_1 = require("./mock-cards");
+var of_1 = require("rxjs/observable/of");
 var CardService = (function () {
     function CardService() {
     }
@@ -14,8 +15,9 @@ var CardService = (function () {
         return Promise.resolve(mock_cards_1.CARDS);
     };
     CardService.prototype.getCard = function (id) {
-        return this.getCards()
-            .then(function (cards) { return cards.find(function (card) { return card.id === id; }); });
+        // Todo: send the message _after_ fetching the hero
+        //this.messageService.add(`CardService: fetched card id=${id}`);
+        return of_1.of(mock_cards_1.CARDS.find(function (card) { return card.id === id; }));
     };
     CardService.prototype.getCardsSlowly = function () {
         var _this = this;
